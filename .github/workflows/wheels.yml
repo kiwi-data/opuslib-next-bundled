@@ -39,13 +39,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install build frontend
-        run: python -m pip install build
+        run: python -m pip install build scikit-build-core
 
       - name: Build sdist
         run: python -m build --sdist --no-isolation

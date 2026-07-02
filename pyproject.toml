@@ -73,6 +73,7 @@ python_files = ["*.py"]
 [tool.cibuildwheel]
 build = "cp39-* cp310-* cp311-* cp312-* cp313-*"
 skip = "pp* *-musllinux_*"
+test-requires = ["pytest>=8.3.5"]
 test-command = "pytest {project}/tests/test_loader.py -q"
 
 [tool.cibuildwheel.linux]
