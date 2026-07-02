@@ -46,6 +46,7 @@ dev = [
 
 [tool.scikit-build]
 sdist.include = [
+    ".gitmodules",
     "README.md",
     "LICENSE",
     "NOTICE",
@@ -54,6 +55,8 @@ sdist.include = [
     "cmake/*",
     "tests/*",
     "vendor/README.md",
+    "vendor/opus/*",
+    "vendor/opus/**/*",
 ]
 
 [tool.scikit-build.wheel]

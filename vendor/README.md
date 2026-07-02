@@ -1,10 +1,13 @@
-Populate `vendor/opus` with the upstream `xiph/opus` source tree before building.
+`vendor/opus` is tracked as a git submodule pointing at upstream
+`https://github.com/xiph/opus`.
 
-Recommended approach:
+After cloning this repository, run:
 
-1. Add `https://github.com/xiph/opus` as a git submodule at `vendor/opus`.
-2. Pin to a released tag.
-3. Keep the upstream `COPYING` file in the vendored tree.
+```bash
+git submodule update --init --recursive
+```
+
+The submodule should stay pinned to a released upstream tag.
 
 The build intentionally fails if `vendor/opus` is missing so wheels never
 accidentally fall back to a system `libopus`.

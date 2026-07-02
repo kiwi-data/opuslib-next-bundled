@@ -43,6 +43,12 @@ pytest
 The CMake build fails fast if `vendor/opus` is missing. Populate it before
 building wheels.
 
+If you clone the repository directly, initialize the submodule first:
+
+```bash
+git submodule update --init --recursive
+```
+
 ## Upstream Attribution
 
 This project is derived in part from:
