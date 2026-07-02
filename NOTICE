@@ -1,0 +1,10 @@
+This project includes code derived from:
+
+- opuslib-next, Copyright (c) 2025 Kalicyh,
+  available at https://github.com/kalicyh/opuslib-next
+- Opus codec sources from xiph/opus,
+  Copyright (c) 2001-2023 Xiph.Org and other contributors,
+  available at https://github.com/xiph/opus
+
+This project redistributes source and binary artifacts under the terms
+described in the included license files.

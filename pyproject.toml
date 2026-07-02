@@ -1,0 +1,82 @@
+[build-system]
+requires = ["scikit-build-core>=0.10"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "opuslib-next-bundled"
+version = "0.1.0"
+description = "Python bindings to libopus with bundled shared libraries"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "BSD-3-Clause"
+authors = [
+    { name = "samwell" },
+]
+keywords = ["audio", "codec", "libopus", "opus"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Multimedia :: Sound/Audio :: Conversion",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://github.com/kiwi-data/opuslib-next-bundled"
+Repository = "https://github.com/kiwi-data/opuslib-next-bundled"
+Issues = "https://github.com/kiwi-data/opuslib-next-bundled/issues"
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2",
+    "cibuildwheel>=2.20",
+    "pytest>=8.3.5",
+    "twine>=6.1.0",
+]
+
+[tool.scikit-build]
+sdist.include = [
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "LICENSES/*",
+    "CMakeLists.txt",
+    "cmake/*",
+    "tests/*",
+    "vendor/README.md",
+]
+
+[tool.scikit-build.wheel]
+packages = ["opuslib_next"]
+py-api = "py3"
+
+[tool.scikit-build.cmake]
+build-type = "Release"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["*.py"]
+
+[tool.cibuildwheel]
+build = "cp39-* cp310-* cp311-* cp312-* cp313-*"
+skip = "pp* *-musllinux_*"
+test-command = "pytest {project}/tests/test_loader.py -q"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64", "aarch64"]
+
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
+
+[tool.cibuildwheel.windows]
+archs = ["AMD64"]
