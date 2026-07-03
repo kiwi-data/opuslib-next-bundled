@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import platform
 import unittest
 from pathlib import Path
 
@@ -24,4 +25,9 @@ class LoaderTest(unittest.TestCase):
     def test_bundled_library_filename_matches_platform(self) -> None:
         loader_module = _load_loader_module()
         filename = loader_module._library_filename()
-        self.assertIn(filename, {"libopus.so", "libopus.dylib", "opus.dll"})
+        expected = {
+            "Darwin": "libopus.dylib",
+            "Linux": "libopus.so",
+            "Windows": "opus.dll",
+        }
+        self.assertEqual(filename, expected[platform.system()])

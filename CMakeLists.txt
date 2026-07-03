@@ -32,3 +32,5 @@ elseif(TARGET libopus)
 else()
   message(FATAL_ERROR "Unable to find libopus target from vendored sources.")
 endif()
+
+install(SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/cmake/normalize_bundled_lib.cmake")
